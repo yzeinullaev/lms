@@ -24,4 +24,4 @@ Homestead.json
 /public/Nginx_1.21_vhost.conf
 /public/uploads/
 /public/uploads/banners/
-.idea
+/.idea
