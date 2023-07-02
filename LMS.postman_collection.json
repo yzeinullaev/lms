@@ -1,0 +1,393 @@
+{
+	"info": {
+		"_postman_id": "849d9c99-1fee-4b01-bb94-b02e1d54c22e",
+		"name": "LMS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4632557"
+	},
+	"item": [
+		{
+			"name": "Authorization",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "ru",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"admin@demo.com\",\r\n    \"password\":\"Dtnthievbn9586\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}login",
+							"host": [
+								"{{server}}login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "registration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "phone",
+									"value": "12312312",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "асанов Т",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "asd@as.dasd",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "asdasd123",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "asdasd123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server}}registration",
+							"host": [
+								"{{server}}registration"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change-password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "73|j3qjSQV78xdycoRGqFededtDCLB6aw0XRrHa0j8N",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "ru",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "password",
+									"value": "Dtnthievbn9586",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server}}change-password",
+							"host": [
+								"{{server}}change-password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Review",
+			"item": [
+				{
+					"name": "Reviews By user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "19|4lWC0MZfZ7xBI0DMOy0XaU5fiKoeAeRWRAf2HDAD",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}review",
+							"host": [
+								"{{server}}review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Review create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "19|4lWC0MZfZ7xBI0DMOy0XaU5fiKoeAeRWRAf2HDAD",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comment\":\"test\",\r\n    \"course_id\":3,\r\n    \"review_star\":2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}review-create",
+							"host": [
+								"{{server}}review-create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cities",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server}}cities?lang=ru&search=алмат",
+					"host": [
+						"{{server}}cities"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "ru"
+						},
+						{
+							"key": "search",
+							"value": "алмат"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "page",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "ru",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{server}}page-by-slug?child_slug=Investments&slug=course",
+					"host": [
+						"{{server}}page-by-slug"
+					],
+					"query": [
+						{
+							"key": "child_slug",
+							"value": "Investments"
+						},
+						{
+							"key": "slug",
+							"value": "course"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user-info",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "52|WsBSpFndyYhidUtsBlfXgE70ZcKWsSjdFoanldx5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server}}user-info",
+					"host": [
+						"{{server}}user-info"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "payment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "76|LC8byLrd7HK63MpIRlyg7xEv7U45Bp8eck2LUvcx",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "ru",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"course\":5,\r\n    \"tariff\":3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}payment",
+					"host": [
+						"{{server}}payment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "submit-application",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "ru",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_name\":\"Yernur\",\r\n    \"last_name\":\"Zein\",\r\n    \"email\":\"yzeinullaev@mail.ru\",\r\n    \"course_id\":3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}submit-application",
+					"host": [
+						"{{server}}submit-application"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "news-unsubscribe",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "19|4lWC0MZfZ7xBI0DMOy0XaU5fiKoeAeRWRAf2HDAD",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{server}}news-unsubscribe",
+					"host": [
+						"{{server}}news-unsubscribe"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "server",
+			"value": " https://almasmukaman-back.test-vip.kz/api/",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "server",
+			"value": " https://almasmukaman-back.test-vip.kz/api/",
+			"type": "string"
+		}
+	]
+}

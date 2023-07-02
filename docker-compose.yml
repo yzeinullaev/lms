@@ -1,0 +1,48 @@
+version: '2.10'
+
+services:
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./:/var/www
+      - ./_docker/nginx/conf.d/:/etc/nginx/conf.d
+    ports:
+      - "8876:80"
+    depends_on:
+      - app
+    container_name: tayyab_nginx
+      
+  app:
+    build: 
+      context: .
+      dockerfile: _docker/app/Dockerfile
+    volumes:
+      - ./:/var/www
+    depends_on:
+      - db
+    container_name: tayyab_app
+
+  db:
+    image: postgres:15.1
+    restart: always
+    environment:
+      POSTGRES_DB: tayyab_db
+      POSTGRES_USER: tayyab_user
+      POSTGRES_PASSWORD: 598177813s
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data/
+    ports:
+      - 8101:5432
+    container_name: tayyab_db
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgAdmin
+    ports:
+      - "5050:80"
+    depends_on:
+      - db 
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@email.com
+      PGADMIN_DEFAULT_PASSWORD: 3652s1452 
